@@ -14,7 +14,7 @@ const userInfoContainer = document.querySelector(".user-info-container");
 // const searchButton = document.querySelector(".btn");
 
 let oldTab = userTab;
-const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
+// Weather requests go through /api/weather (see api/weather.js), which keeps the API key on the server
 oldTab.classList.add("current-tab");
 getfromSessionStorage();
 
@@ -76,7 +76,7 @@ async function fetchUserWeatherInfo(coordinates)
 
     try
     {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
+        const response = await fetch(`/api/weather?lat=${lat}&lon=${lon}`);
         const data = await response.json();
 
         loadingScreen.classList.remove("active");
@@ -166,7 +166,7 @@ async function fetchSearchWeatherInfo(city)
     grantAccessContainer.classList.remove("active");
     try
     {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+        const response = await fetch(`/api/weather?q=${encodeURIComponent(city)}`);
         const data = await response.json();
         loadingScreen.classList.remove("active");
         // if(!data.weatherInfo?.name != `${city}`)
