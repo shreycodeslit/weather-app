@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
+    <title>What's the Weather</title>
+    <link rel="icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -78,7 +79,13 @@
                     </div>
                 </div>
             </div>
+            <!-- city not found, location blocked or no connection -->
+            <div class="error-container sub-container">
+                <img src="./assets/not-found.png" width="200" height="200" alt="">
+                <p data-errorText></p>
+            </div>
         </div>
+        <p class="credit">Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a></p>
     </div>
     <script src="script.js"></script>
 </body>
